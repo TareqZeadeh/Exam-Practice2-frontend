@@ -22,7 +22,7 @@ class FavDrinks extends React.Component {
         const { user } = this.props.auth0;
 
         axios
-            .get(`http://localhost:3002/userDrinks`, { params: { email: user.email } })
+            .get(`${process.env.REACT_APP_SERVER_URL}/userDrinks`, { params: { email: user.email } })
             .then(result => {
                 this.setState({
                     userDrinks: result.data
@@ -36,7 +36,7 @@ class FavDrinks extends React.Component {
     deleteDrink = (idx) => {
         const { user } = this.props.auth0;
         axios
-            .delete(`http://localhost:3002/deleteDrink/${idx}`, { params: { email: user.email } })
+            .delete(`${process.env.REACT_APP_SERVER_URL}/deleteDrink/${idx}`, { params: { email: user.email } })
             .then(result => {
                 this.setState({
                     userDrinks: result.data
@@ -84,7 +84,7 @@ class FavDrinks extends React.Component {
         }
 
         axios
-        .put(`http://localhost:3002/updateDrink/${this.state.index}`,params)
+        .put(`${process.env.REACT_APP_SERVER_URL}/updateDrink/${this.state.index}`,params)
         .then(result =>{
             this.setState({
                 userDrinks: result.data

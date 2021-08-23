@@ -16,7 +16,7 @@ class MyFavoriteBooks extends React.Component {
   componentDidMount() {
 
     axios
-      .get(`http://localhost:3002/allDrinks`)
+      .get(`${process.env.REACT_APP_SERVER_URL}/allDrinks`)
       .then(result => {
         this.setState({
           allDrinks: result.data
@@ -36,7 +36,7 @@ class MyFavoriteBooks extends React.Component {
       drinkObj : drink
     }
       axios
-      .post(`http://localhost:3002/addDrink`, params)
+      .post(`${process.env.REACT_APP_SERVER_URL}/addDrink`, params)
       .catch(err =>{
         console.log(err);
       })
